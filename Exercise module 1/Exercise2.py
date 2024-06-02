@@ -19,13 +19,16 @@ def elu(x):
     return x
 
 
-def exercise2(x, af):
+def exercise2():
+    x = input("Input x = ")
     try:
         float(x)
     except ValueError:
         print('x must be a number')
         return
 
+    x = float(x)
+    af = input("Input activation Function (sigmoid|relu|elu): ")
     if af == "elu":
         print(elu(x))
     elif af == 'relu':
@@ -35,5 +38,5 @@ def exercise2(x, af):
     else:
         print(f"{af} is not supported")
 
-
+exercise2()
 
