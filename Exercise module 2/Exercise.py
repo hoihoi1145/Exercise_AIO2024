@@ -8,7 +8,7 @@ def test_int_list(w):
         try:
             int(i)
         except ValueError:
-            print('your list must be combined of int numbers separated by the space')
+            print('your list must be combined of integers separated by the space')
             return 0
     return 1
 
@@ -17,14 +17,18 @@ def test_int(n):
     try:
         int(n)
     except ValueError:
-        print('the number must be int')
+        print('the number must be integer')
         return 0
     return 1
 
 
 def test_pos_number(n):
-    if test_int(n) and int(n) > 0:
-        return 1
+    if test_int(n):
+        if int(n) > 0:
+            return 1
+        else:
+            print('the number must be positive integer')
+            return 0
     return 0
 
 
@@ -60,7 +64,7 @@ def hidden_algorithm2(s):
             d[i] = 1
         else:
             d[i] += 1
-    print(d)
+    return d
 
 
 def Levenshtein(s1, s2):
@@ -88,14 +92,21 @@ def exercise1():
 
 def exercise2():
     s = input('Give me a word: ')
-    hidden_algorithm2(s)
+    d = hidden_algorithm2(s)
+    print(d)
 
 
 def exercise3():
     file_path = input('Give me file path: ')
+    word = input('Give me a word: ')
     with open(file_path, 'r') as file_object:
         content = file_object.read()
-        hidden_algorithm2(content.split())
+        d = hidden_algorithm2(content.split())
+        print(d)
+        if word not in d:
+            print(0)
+        else:
+            print(d[word])
 
 
 def exercise4():
@@ -104,5 +115,21 @@ def exercise4():
     print(Levenshtein(word1, word2))
 
 
+def main():
+    exercise_number = input('Give me the exercise number(1 | 2 | 3 | 4): ')
+    if test_pos_number(exercise_number):
+        exercise_number = int(exercise_number)
+        match exercise_number:
+            case 1:
+                exercise1()
+            case 2:
+                exercise2()
+            case 3:
+                exercise3()
+            case 4:
+                exercise4()
+            case _:
+                print('The exercise number is not existed, try again from 1 to 4')
 
+main()
 
