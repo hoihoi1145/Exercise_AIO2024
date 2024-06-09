@@ -30,3 +30,5 @@ def exercise1(tp, fp, fn):
         print(f'recall is', recall(tp, fn))
         print(f'f1-score is', f1(tp, fp, fn))
 
+
+exercise1(2, 4, 5)

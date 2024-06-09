@@ -27,7 +27,7 @@ def sin(x, n):
             for j in range(max(1, 2*i), 2*i+2):
                 d *= j
             c += ((-1)**(i%2))*(x**(2*i+1)/d)
-        print(c)
+        print(round(c, 4))
 
 
 def cos(x, n):
@@ -38,7 +38,7 @@ def cos(x, n):
             for j in range(max(1, 2*i-1), 2*i+1):
                 d *= j
             c += (-1)**(i%2)*x**(2*i)/d
-        print(c)
+        print(round(c, 2))
 
 
 def sinh(x, n):
@@ -49,7 +49,7 @@ def sinh(x, n):
             for j in range(max(1, 2*i), 2*i+2):
                 d *= j
             c += x**(2*i+1)/d
-        print(c)
+        print(round(c, 2))
 
 
 def cosh(x, n):
@@ -60,6 +60,10 @@ def cosh(x, n):
             for j in range(max(1, 2*i-1), 2*i+1):
                 d *= j
             c += x**(2*i)/d
-        print(c)
+        print(round(c, 2))
 
+cosh(3.14, 10)
+cos(3.14, 10)
+sin(3.14, 10)
+sinh(3.14, 10)
 cosh(3.14, 10)

@@ -15,7 +15,7 @@ def relu(x):
 
 def elu(x):
     if x <= 0:
-        return A*(math.exp(x)-1)
+        return round(A*(math.exp(x)-1), 2)
     return x
 
 
