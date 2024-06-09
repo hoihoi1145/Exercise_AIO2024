@@ -38,3 +38,4 @@ def exercise3():
 
 
 exercise3()
+print('Hello')
