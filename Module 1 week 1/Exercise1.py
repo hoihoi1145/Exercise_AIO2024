@@ -26,9 +26,9 @@ def exercise1(tp, fp, fn):
     elif p:
         print(f'tp and fp and fn must be greater than zero')
     else:
-        print(f'precision is', precision(tp, fp))
-        print(f'recall is', recall(tp, fn))
-        print(f'f1-score is', f1(tp, fp, fn))
+        print("precision is {0}".format(precision(tp, fp)))
+        print("recall is {0}".format(recall(tp, fn)))
+        print("f1-score is {0}".format(f1(tp, fp, fn)))
 
 
 exercise1(2, 4, 5)
