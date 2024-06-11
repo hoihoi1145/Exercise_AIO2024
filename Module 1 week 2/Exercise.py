@@ -78,7 +78,7 @@ def add_dict(s):
     return d
 
 
-def Levenshtein(s1, s2):
+def levenshtein(s1, s2):
     n, m = len(s1), len(s2)
     prev = list(range(n+1))
     curr = [0]*(n+1)
@@ -123,7 +123,7 @@ def exercise3():
 def exercise4():
     word1 = input('Give me word 1: ')
     word2 = input('Give me word 2: ')
-    print(Levenshtein(word1, word2))
+    print(levenshtein(word1, word2))
 
 
 def main():
