@@ -32,32 +32,43 @@ def test_pos_number(n):
     return 0
 
 
-def hidden_algorithm1(w, k):
-    h, d, q, n, a = [], [], defaultdict(int), len(w), -10**99
+def max_number_in_firstsubset(w, k, n):
+    h, a = [], -10**99
+    for i in range(k):
+        heappush(h, -w[i])
+        a = max(a, w[i])
+    return h, a
+
+
+def max_number_in_subset(w, k, n, h):
+    d, q = [], dict()
+    for i in range(k, n):
+        heappush(h, -w[i])
+        q[w[i - k]] += 1
+        while 1:
+            a = -heappop(h)
+            if a in q:
+                q[a] -= 1
+                if q[a] == 0:
+                    del q[a]
+            else:
+                d += [a]
+                heappush(h, -a)
+                break
+    return d
+
+
+def list_max_number_in_subset(w, k):
+    n = len(w)
     if k <= n:
-        for i in range(k):
-            heappush(h, -w[i])
-            a = max(a, w[i])
-        d += [a]
-        for i in range(k, n):
-            heappush(h, -w[i])
-            q[w[i-k]] += 1
-            while 1:
-                a = -heappop(h)
-                if a in q:
-                    q[a] -= 1
-                    if q[a] == 0:
-                        del q[a]
-                else:
-                    d += [a]
-                    heappush(h, -a)
-                    break
+        h, a = max_number_in_firstsubset(w, k, n)
+        d = [a] + max_number_in_subset(w, k, n, h)
         return d
     else:
         print('The number k must be smaller than the number of numbers in the list')
 
 
-def hidden_algorithm2(s):
+def add_dict(s):
     d = dict()
     for i in s:
         if i not in d:
@@ -87,12 +98,12 @@ def exercise1():
     k = int(input('Give me a number k: '))
     if test_int_list(w) and test_pos_number(k):
         w, k = list(map(int, w)), int(k)
-        print(hidden_algorithm1(w, k))
+        print(max_number_in_subset(w, k))
 
 
 def exercise2():
     s = input('Give me a word: ')
-    d = hidden_algorithm2(s)
+    d = add_dict(s)
     print(d)
 
 
@@ -101,7 +112,7 @@ def exercise3():
     word = input('Give me a word: ')
     with open(file_path, 'r') as file_object:
         content = file_object.read()
-        d = hidden_algorithm2(content.split())
+        d = add_dict(content.split())
         print(d)
         if word not in d:
             print(0)
