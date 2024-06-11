@@ -32,7 +32,7 @@ def test_pos_number(n):
     return 0
 
 
-def max_number_in_firstsubset(w, k, n):
+def max_number_in_first_subset(w, k):
     h, a = [], -10**99
     for i in range(k):
         heappush(h, -w[i])
@@ -61,7 +61,7 @@ def max_number_in_subset(w, k, n, h):
 def list_max_number_in_subset(w, k):
     n = len(w)
     if k <= n:
-        h, a = max_number_in_firstsubset(w, k, n)
+        h, a = max_number_in_first_subset(w, k)
         d = [a] + max_number_in_subset(w, k, n, h)
         return d
     else:
@@ -98,7 +98,7 @@ def exercise1():
     k = int(input('Give me a number k: '))
     if test_int_list(w) and test_pos_number(k):
         w, k = list(map(int, w)), int(k)
-        print(max_number_in_subset(w, k))
+        print(list_max_number_in_subset(w, k))
 
 
 def exercise2():
